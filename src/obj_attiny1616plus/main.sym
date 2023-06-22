@@ -1,0 +1,239 @@
+
+obj_attiny1616plus/main.elf:     file format elf32-avr
+
+SYMBOL TABLE:
+00803800 l    d  .data	00000000 .data
+00000000 l    d  .text	00000000 .text
+0000ae52 l    d  .rodata	00000000 .rodata
+00803800 l    d  .bss	00000000 .bss
+00000000 l    d  .stab	00000000 .stab
+00000000 l    d  .stabstr	00000000 .stabstr
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .note.gnu.avr.deviceinfo	00000000 .note.gnu.avr.deviceinfo
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    df *ABS*	00000000 
+0000003e l       *ABS*	00000000 __SP_H__
+0000003d l       *ABS*	00000000 __SP_L__
+0000003f l       *ABS*	00000000 __SREG__
+00000034 l       *ABS*	00000000 __CCP__
+00000000 l       *ABS*	00000000 __tmp_reg__
+00000001 l       *ABS*	00000000 __zero_reg__
+000000b8 l     F .text	00000074 set_motor_direction_duty
+0000ae97 l     O .rodata	00000003 CSWTCH.12
+0000ae94 l     O .rodata	00000003 CSWTCH.13
+0000ae88 l     O .rodata	0000000c motor_map
+0000012c l     F .text	00000010 update_led
+00803880 l     O .bss	000000a5 radio_state
+0000013c l     F .text	0000002e hop_to_next_channel
+0000016a l     F .text	00000018 diag_puts
+00000182 l     F .text	0000001e uninit_everything
+000001a0 l     F .text	0000003e epic_fail
+000001de l     F .text	00000036 wait_auto_clear.constprop.1
+00000214 l     F .text	0000001a mixing_init
+00803925 l     O .bss	00000009 mixing_state
+0000022e l     F .text	0000006e nvconfig_save
+0000029c l     F .text	00000014 enable_rx
+000002b0 l     F .text	00000034 diag_print
+00803823 l     O .bss	00000050 buf
+000002e4 l     F .text	0000004a dump_buf
+0000032e l     F .text	0000004a register_dump
+00000378 l     F .text	0000003c diag_println
+000003b4 l     F .text	00000056 pin_check
+0000040a l     F .text	00000058 init_bind_mode
+00000462 l     F .text	0000006c handle_bind_complete
+000004ce l     F .text	000002ea init_a7105_hardware
+0000ae84 l     O .rodata	00000004 radio_id
+0000ae52 l     O .rodata	00000032 reg_init_values
+000007b8 l     F .text	0000003e init_interrupts
+00803878 l     O .bss	00000008 radio_counters
+00803873 l     O .bss	00000005 master_state
+00803821 l     O .bss	00000001 configuration_mode
+00803819 l     O .bss	00000002 throttle_max
+0080381b l     O .bss	00000002 throttle_min
+00803818 l     O .bss	00000001 config_switch_last
+00803817 l     O .bss	00000001 config_switch_count
+00803807 l     O .bss	00000004 last_switch_time
+00803800 l     O .bss	00000002 blank_data
+00803816 l     O .bss	00000001 config_rpm_value
+00803806 l     O .bss	00000001 config_flash_count
+00803802 l     O .bss	00000004 config_flash_start_time
+0080380b l     O .bss	00000002 diag_count
+00803822 l     O .bss	00000001 has_signal
+0080381d l     O .bss	00000004 last_signal_time
+0080380d l     O .bss	00000005 vsense_state
+00803812 l     O .bss	00000004 last_vsense_tickcount
+00000000 l    df *ABS*	00000000 obj_attiny1616plus/spi_asm.o
+00000001 l       *ABS*	00000000 vport_sck
+00000007 l       *ABS*	00000000 bit_sck
+00000005 l       *ABS*	00000000 vport_scs
+00000003 l       *ABS*	00000000 bit_scs
+00000000 l       *ABS*	00000000 vport_sdio_dir
+00000001 l       *ABS*	00000000 vport_sdio_out
+00000002 l       *ABS*	00000000 vport_sdio_in
+00000006 l       *ABS*	00000000 bit_sdio
+00000d2a l       .text	00000000 wbloop
+00000da4 l       .text	00000000 wbfinished
+0000110a l       .text	00000000 rbloop
+00000000 l    df *ABS*	00000000 _exit.o
+00002e50 l       .text	00000000 __stop_program
+00000000 l    df *ABS*	00000000 _udivmodhi4.o
+0000235c l       .text	00000000 __udivmodhi4_ep
+0000234e l       .text	00000000 __udivmodhi4_loop
+00000000 l    df *ABS*	00000000 _divmodhi4.o
+00002386 l       .text	00000000 __divmodhi4_neg1
+0000238e l       .text	00000000 __divmodhi4_neg2
+00002394 l       .text	00000000 __divmodhi4_exit
+00000000 l    df *ABS*	00000000 _udivmodsi4.o
+000023bc l       .text	00000000 __udivmodsi4_ep
+000023a2 l       .text	00000000 __udivmodsi4_loop
+00000000 l    df *ABS*	00000000 _clear_bss.o
+000000a6 l       .text	00000000 .do_clear_bss_start
+000000a4 l       .text	00000000 .do_clear_bss_loop
+00000000 l    df *ABS*	00000000 vsnprintf.c
+0000003e l       *ABS*	00000000 __SP_H__
+0000003d l       *ABS*	00000000 __SP_L__
+0000003f l       *ABS*	00000000 __SREG__
+00000034 l       *ABS*	00000000 __CCP__
+00000000 l       *ABS*	00000000 __tmp_reg__
+00000001 l       *ABS*	00000000 __zero_reg__
+00000000 l    df *ABS*	00000000 vfprintf.c
+0000003e l       *ABS*	00000000 __SP_H__
+0000003d l       *ABS*	00000000 __SP_L__
+0000003f l       *ABS*	00000000 __SREG__
+00000034 l       *ABS*	00000000 __CCP__
+00000000 l       *ABS*	00000000 __tmp_reg__
+00000001 l       *ABS*	00000000 __zero_reg__
+00000000 l    df *ABS*	00000000 fputc.c
+0000003e l       *ABS*	00000000 __SP_H__
+0000003d l       *ABS*	00000000 __SP_L__
+0000003f l       *ABS*	00000000 __SREG__
+00000034 l       *ABS*	00000000 __CCP__
+00000000 l       *ABS*	00000000 __tmp_reg__
+00000001 l       *ABS*	00000000 __zero_reg__
+00000b4e g       .text	00000000 spi_write_byte
+000000b4  w      .text	00000000 __vector_22
+000000b4  w      .text	00000000 __vector_28
+000022fe g       .text	00000000 eeprom_write_r18
+000023e6 g       .text	0000001e .hidden __umulhisi3
+000000b4  w      .text	00000000 __vector_1
+00000800 g       *ABS*	00000000 __DATA_REGION_LENGTH__
+00002e1e g       .text	00000030 .hidden __epilogue_restores__
+000024f4 g     F .text	00000008 __divsf3
+00000000 g       *ABS*	00000000 __TEXT_REGION_ORIGIN__
+000026ec g     F .text	00000022 __fp_round
+000025d8 g     F .text	0000000e __fixsfsi
+0000270e g     F .text	00000044 __fp_split3
+00002346 g       .text	00000028 .hidden __udivmodhi4
+00000090 g       .text	00000000 __trampolines_start
+00002e52 g       .text	00000000 _etext
+00000dec g       .text	00000000 spi_write_byte_then_strobe
+0000241a g     F .text	0000000e __subsf3
+000000b4  w      .text	00000000 __vector_24
+000000b4  w      .text	00000000 __vector_12
+00002d30 g     F .text	000000bc __ultoa_invert
+000000b4 g       .text	00000000 __bad_interrupt
+00002334 g     F .text	00000012 memcpy
+0000342c g       *ABS*	00000000 __data_load_end
+000000b4  w      .text	00000000 __vector_6
+00002872 g     F .text	00000058 vsnprintf
+00000090 g       .text	00000000 __trampolines_end
+000007f6 g     F .text	0000025a __vector_3
+00002752 g     F .text	0000000e __fp_zero
+000000b4  w      .text	00000000 __vector_23
+0000342c g       *ABS*	00000000 __data_load_start
+00000090 g       .text	00000000 __dtors_end
+0080392e g       .bss	00000000 __bss_end
+00002404 g       .text	00000016 .hidden __muluhisi3
+00000dec g       .text	00000000 spi_strobe3
+000000b4  w      .text	00000000 __vector_30
+00000400 g       *ABS*	00000000 __LOCK_REGION_LENGTH__
+000000b4  w      .text	00000000 __vector_25
+00001016 g       .text	00000000 spi_strobe_then_read_block
+000022fc g     F .text	00000028 eeprom_write_byte
+00002ca2 g     F .text	00000016 strnlen
+00008000 g       *ABS*	00000000 __RODATA_PM_OFFSET__
+0000251c g     F .text	000000dc __divsf3x
+000000b4  w      .text	00000000 __vector_11
+00001090 g       .text	00000000 spi_read_block
+00000090  w      .text	00000000 __init
+000022e8 g       .text	00000000 eeprom_update_r18
+00000a50 g     F .text	000000ae __vector_13
+0000278c g       .text	00000000 __mulsf3_pse
+000000b4  w      .text	00000000 __vector_17
+000026ca g     F .text	00000006 __fp_nan
+000000b4  w      .text	00000000 __vector_19
+000022c6 g     F .text	00000020 eeprom_update_block
+000000b4  w      .text	00000000 __vector_7
+000026be g     F .text	0000000c __fp_inf
+0000009c g       .text	00000010 .hidden __do_clear_bss
+00002c8c g     F .text	00000016 strnlen_P
+00810000 g       .stab	00000000 __eeprom_end
+00002786 g     F .text	000000d2 __mulsf3x
+00002648 g       .text	00000000 __floatsisf
+00000000 g       .text	00000000 __vectors
+00000f4a g       .text	00000000 spi_read_byte
+00002324 g     F .text	00000010 eeprom_read_byte
+000000b4  w      .text	00000000 __vector_27
+00002854 g     F .text	0000001e strncpy
+00000000  w      .text	00000000 __vector_default
+0000236e g       .text	00000028 .hidden __divmodhi4
+000000b4  w      .text	00000000 __vector_5
+000022e6 g     F .text	00000016 eeprom_update_byte
+00000daa g       .text	00000000 spi_strobe
+0000283a g     F .text	0000001a memcmp
+00000400 g       *ABS*	00000000 __SIGNATURE_REGION_LENGTH__
+000023da g       .text	0000000c .hidden __tablejump2__
+00000090 g       .text	00000000 __ctors_start
+000022be g     F .text	00000008 eeprom_read_block
+000026de g     F .text	0000000e __fp_pscB
+0000271e g       .text	00000000 __fp_splitA
+00803800 g       .bss	00000000 __bss_start
+00001164 g     F .text	0000115a main
+000000b4  w      .text	00000000 __vector_4
+00803800 g       *ABS*	00000000 __DATA_REGION_ORIGIN__
+00002760 g     F .text	00000008 __mulsf3
+00000000  w      *ABS*	00000000 __heap_end
+000000b4  w      .text	00000000 __vector_9
+00000cb4 g       .text	00000000 spi_write_block
+000000b4  w      .text	00000000 __vector_2
+0000244a g     F .text	000000cc __addsf3x
+00000400 g       *ABS*	00000000 __USER_SIGNATURE_REGION_LENGTH__
+0000232c g       .text	00000000 eeprom_mapen
+000000b4  w      .text	00000000 __vector_21
+00000afe g     F .text	00000050 __vector_15
+000026d0 g     F .text	0000000e __fp_pscA
+00002cb8 g     F .text	00000078 fputc
+000000b4  w      .text	00000000 __vector_29
+00000c3a g       .text	00000000 spi_strobe_then_write_block
+00000090 g       .text	00000000 __dtors_start
+00000090 g       .text	00000000 __ctors_end
+00003fff  w      *ABS*	00000000 __stack
+00803800 g       .data	00000000 _edata
+0080392e g       .stab	00000000 _end
+000000b4  w      .text	00000000 __vector_8
+000000b4  w      .text	00000000 __vector_26
+00002522 g       .text	00000000 __divsf3_pse
+00002e4e  w      .text	00000000 .hidden exit
+00002644 g     F .text	0000007a __floatunsisf
+0000236e g       .text	00000000 .hidden _div
+00002396 g       .text	00000044 .hidden __udivmodsi4
+000025e6 g     F .text	0000005e __fixunssfsi
+00000100 g       *ABS*	00000000 __EEPROM_REGION_LENGTH__
+00002e4e g       .text	00000000 .hidden _exit
+000000b4  w      .text	00000000 __vector_14
+000000b4  w      .text	00000000 __vector_10
+000000b4  w      .text	00000000 __vector_16
+000000b4  w      .text	00000000 __vector_18
+0000000a g       *ABS*	00000000 __FUSE_REGION_LENGTH__
+00004000 g       *ABS*	00000000 __TEXT_REGION_LENGTH__
+000000b4  w      .text	00000000 __vector_20
+0000241c g       .text	00000000 __addsf3
+00002dec g       .text	00000032 .hidden __prologue_saves__
+000028ca g     F .text	000003c2 vfprintf
+00002754 g       .text	00000000 __fp_szero
+
+

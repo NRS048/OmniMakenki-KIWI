@@ -1,0 +1,25 @@
+00803800 g       .bss	00000000 __bss_start
+00803800 g       .data	00000000 _edata
+00803800 l    d  .bss	00000000 .bss
+00803800 l    d  .data	00000000 .data
+00803800 l     O .bss	00000002 blank_data
+00803802 l     O .bss	00000004 config_flash_start_time
+00803806 l     O .bss	00000001 config_flash_count
+00803807 l     O .bss	00000004 last_switch_time
+0080380b l     O .bss	00000002 diag_count
+0080380d l     O .bss	00000005 vsense_state
+00803812 l     O .bss	00000004 last_vsense_tickcount
+00803816 l     O .bss	00000001 config_rpm_value
+00803817 l     O .bss	00000001 config_switch_count
+00803818 l     O .bss	00000001 config_switch_last
+00803819 l     O .bss	00000002 throttle_max
+0080381b l     O .bss	00000002 throttle_min
+0080381d l     O .bss	00000004 last_signal_time
+00803821 l     O .bss	00000001 configuration_mode
+00803822 l     O .bss	00000001 has_signal
+00803823 l     O .bss	00000050 buf
+00803873 l     O .bss	00000005 master_state
+00803878 l     O .bss	00000008 radio_counters
+00803880 l     O .bss	000000a5 radio_state
+00803925 l     O .bss	00000009 mixing_state
+0080392e g       .bss	00000000 __bss_end
