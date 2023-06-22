@@ -20,8 +20,10 @@ A KIWI Omni drive firmware for the Malenki Nano all-in-one RX &amp; Tri-ESC plat
 - This program uses the base files released before 6/22/23
   - 6/22/23 - deploy
 ## Usage
-To flash new firmware, you need to connect to the SOICbite debug pads, the pinout is listed below
+To control you need access to three channels.
+Ex. Flysky FS-i6 the right stick up/down will be your forward & backward, right stick left/right will be strafe left & right, left stick left/right will be your turn left & right
 
+To flash new firmware, you need to connect to the SOICbite debug pads, the pinout is listed below
 
 |pin #|usage|pin #|usage|
 |-----|-----|-----|-----|
