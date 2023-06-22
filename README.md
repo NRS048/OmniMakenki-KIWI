@@ -56,9 +56,7 @@ back = (2*steering + weapon) / 3;
 (left, right, & back are final motor outputs, but may need to be mapped to standard 1000-2000ms PWM for your usage)
 - input numbers should be in the form of EX. +-100, +-400, +-1000, as long as 0=no movement
 - as your numbers get bigger, it theoretically gets more accurate, but is harder to calculate
-- 1.732050808 is used as a replacement to sqrt(3) in the calculations.
-
-![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/TestChassis.jpg)
+- 1.732050808 is used as a replacement to sqrt(3) in the calculations.\
 
 ## License
 
