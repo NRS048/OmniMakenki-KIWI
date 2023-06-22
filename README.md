@@ -30,6 +30,8 @@ To flash new firmware, you need to connect to the SOICbite debug pads, the pinou
 |`6`|UPDI interface|`3`|GND|
 |`5`|nc|`4`|GND|
 
+![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/Malaxi.PNG)
+
 Pin 8 is the top pin on the front, and pin 1 is the top pin on the back, and is indicated with a white outline, shown below.
 
 The flashing instructions are listed in a [issue request](https://github.com/MarkR42/malenki-nano/issues/6) on the Malenki-nano Repo.
@@ -38,7 +40,7 @@ install the listed programs and libraries, and use the script [flash1616.sh](htt
 
 You can also compile your own code with the instructions given [here](https://github.com/MarkR42/malenki-nano/blob/master/firmware/README.md)
 ## Theory
-The three channels of the malenki lend well to this usage, with the addition of the third channel allowing movement in all 360 degrees.
+The three channels of the Malenki lend well to this usage, with the addition of the third channel allowing movement in all 360 degrees.
 
 Equations:
 ```
@@ -53,8 +55,11 @@ back = (2*steering + weapon) / 3;
 ```
 (left, right, & back are final motor outputs, but may need to be mapped to standard 1000-2000ms PWM for your usage)
 - input numbers should be in the form of EX. +-100, +-400, +-1000, as long as 0=no movement
-- as your numbers get bigger, it theoretically gets more accurate, but is harder to claculate
+- as your numbers get bigger, it theoretically gets more accurate, but is harder to calculate
 - 1.732050808 is used as a replacement to sqrt(3) in the calculations.
+
+![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/TestChassis.jpg)
+
 ## License
 
 [GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
