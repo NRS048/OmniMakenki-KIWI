@@ -27,10 +27,10 @@ To flash new firmware, you need to connect to the SOICbite debug pads, the pinou
 
 |pin #|usage|pin #|usage|
 |-----|-----|-----|-----|
-|`8`|TXDEBUG|`1`|VBAT (5V)|   
-|`7`|nc|`2`|nc|
-|`6`|UPDI interface|`3`|GND|
-|`5`|nc|`4`|GND|
+|`1`|VBAT (5V)|`8`|TXDEBUG| 
+|`2`|nc|`7`|nc|
+|`3`|GND|`6`|UPDI interface|
+|`4`|GND|`5`|nc|
 
 ![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/Malaxi.PNG)
 
