@@ -6,7 +6,7 @@ A KIWI Omni drive firmware for the Malenki Nano all-in-one RX &amp; Tri-ESC plat
 ## Acknowledgements
 
  - [MarkR42](https://github.com/MarkR42) origional creator of the Malenki ESC
- - [Turnabot](https://turnabot.com/) Licensed seller & Knowledge of ESC flashing
+ - [Turnabot](https://turnabot.com/) Well known seller, & Knowledge of ESC flashing
  - [MacroBot.us Discord](https://discord.gg/SXwArmv) Tech help & Laughs
  - [Tom_Bottiglieri & Joel Johnson on ChiefDelphi](https://www.chiefdelphi.com/t/pic-kiwi-vex-robot/71688/7) Origional Equations for Kiwi Mixing
 
@@ -58,7 +58,10 @@ back = (2*steering + weapon) / 3;
 (left, right, & back are final motor outputs, but may need to be mapped to standard 1000-2000ms PWM for your usage)
 - input numbers should be in the form of EX. +-100, +-400, +-1000, as long as 0=no movement
 - as your numbers get bigger, it theoretically gets more accurate, but is harder to calculate
-- 1.732050808 is used as a replacement to sqrt(3) in the calculations.\
+- 1.732050808 is used as a replacement to sqrt(3) in the calculations.
+- these equations can be easily adapted to your own program, throttle is the up/down movement on the right stick of your tx, steering is the left/right movement on the right stick of your tx, and throttle is the left/right movement on the left stick of your tx, photo attached below.
+
+![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/channels.png)
 
 ## License
 
