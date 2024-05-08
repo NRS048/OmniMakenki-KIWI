@@ -1,10 +1,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "mixing.h"
 #include "motors.h"
 #include "diag.h"
+
+#define M_PI 3.14159265358979323846
 
 mixing_state_t mixing_state;
 
@@ -38,52 +41,6 @@ static int deadzone(int n, int deadzone)
     return n;
 }
 
-// Take a channel in the range -200 .. 200
-/*
-static void squaring(int *channel, int maxval)
-{
-    int32_t c32 = *channel;
-
-    // This takes it in the range 200*200 (=40k) 
-    c32 *= abs(c32);
-    
-    c32 /= maxval;
-    *channel = (int) c32;
-}
-*/
-/*
-static uint16_t apply_weapon_rules(int16_t throttle, int16_t steering, int16_t weapon)
-{
-    // Fix up weapon to correct range 
-    weapon = (weapon * 20) / 45; // -200 ... 200
-    
-    uint8_t mode  = mixing_state.weapon_mode;
-    
-    if (mode == WEAPON_MODE_FLIPHARD) {
-        if (weapon > 70) {
-            // threshold to give maximum flip power.
-            weapon = 200;
-        } else if (weapon < -70 ) {
-            // retract with a dead zone, but gradually.
-            weapon = signedclamp(weapon, 200);
-        } else {
-            // dead zone
-            weapon = 0;
-            // If we are driving, let's auto-retract the weapon.
-            if (abs(throttle) > 20) {
-                weapon = -40;
-            }
-        }
-    } else {
-        // Default weapon mode
-        weapon = deadzone(weapon, 20);
-        weapon = signedclamp(weapon, 200);
-    }
-    
-    return weapon;
-}
-*/
-
 static uint16_t diag_count=0;
 
 void mixing_drive_motors(int16_t throttle, int16_t steering, int16_t weapon, bool invert)
@@ -107,43 +64,36 @@ void mixing_drive_motors(int16_t throttle, int16_t steering, int16_t weapon, boo
     steering = deadzone(steering, 10);
     weapon = deadzone(weapon, 10);  
     
-    int left, right, back;
-    /*
-    if (mixing_state.enable_mixing) {
-        // Apply "squaring"
-        squaring(&throttle,100);
-        squaring(&steering,100);
-        if (! mixing_state.enable_max_steering) {
-            // Scale steering further, to stop steering too fast.
-            steering = steering / 2;
-        }
-        left = throttle + steering;   
-        right = throttle - steering;
-    } else {
-        // no mixing; no squaring.
-        left = steering;
-        right = throttle;
+    int left, right, back, temp01;
+
+    //omni mixing -------------------------------------------------------------------------
+
+
+    left = (100*sqrt((throttle*throttle)+(steering*steering))*sin((0.524)-atan2(throttle, steering)))/fmin(abs(100/cos((1.571)-atan2(throttle, steering))), abs(100/sin((1.571)-atan2(throttle, steering)))) + weapon; //math explained in the README - https://github.com/NRS048/OmniMakenki-KIWI
+    
+    right = (100*sqrt((throttle*throttle)+(steering*steering))*sin((2.618)-atan2(throttle, steering)))/fmin(abs(100/cos((1.571)-atan2(throttle, steering))), abs(100/sin((1.571)-atan2(throttle, steering)))) + weapon;
+        
+    back = (100*sqrt((throttle*throttle)+(steering*steering))*sin((4.712)-atan2(throttle, steering)))/fmin(abs(100/cos((1.571)-atan2(throttle, steering))), abs(100/sin((1.571)-atan2(throttle, steering)))) + weapon;
+
+    if( (fmax(left, fmax(right, back))) > 100 ){
+        temp01 = fmax(left, fmax(right, back)) - 100;
+        left -= temp01;
+        right -= temp01;
+        back -= temp01;
     }
-    */
-   
-    // left / right should now have range -150 ... 150
-    // Clamp them again at 100
-    //left = signedclamp(left, 100); 
-    //right = signedclamp(right, 100); 
 
-    //omni mixing
-    left = (-steering - (1.732050808)*throttle + weapon) / 3; //sqrt(3) = (1.732050808) ish
-    right = (-steering + (1.732050808)*throttle + weapon) / 3;
-    back = (2*steering + weapon) / 3;
+    if( (fmin(left, fmin(right, back))) < -100 ){
+        temp01 = fmin(left, fmin(right, back)) + 100;
+        left -= temp01;
+        right -= temp01;
+        back -= temp01;
+    }
 
-    // Now scale back to += 200 which is correct for pwm
+
+    // Now scale back to += 200 which is correct for pwm -----------------------------------
     left = left *2;
     right = right * 2;
     back = back * 2;
-   
-    // Apply "squaring"
-    // squaring(&left,200);
-    // squaring(&right,200);
   
     //weapon = apply_weapon_rules(throttle, steering, weapon);
     
@@ -163,16 +113,18 @@ void mixing_drive_motors(int16_t throttle, int16_t steering, int16_t weapon, boo
         weapon = -weapon;
 
 
-    set_motor_direction_duty(MOTOR_WEAPON, back);
+    set_motor_direction_duty(MOTOR_WEAPON, -back); //reversed back
+
     if ((left == 0) && mixing_state.enable_braking) {
         enable_motor_brake(MOTOR_LEFT);
     } else {
-        set_motor_direction_duty(MOTOR_LEFT, -left);//reversed
+        set_motor_direction_duty(MOTOR_LEFT, left);
     }
+
     if ((right == 0) && mixing_state.enable_braking) {
         enable_motor_brake(MOTOR_RIGHT);
     } else {
-        set_motor_direction_duty(MOTOR_RIGHT, right);
+        set_motor_direction_duty(MOTOR_RIGHT, -right); //reversed right
     }
 
     if (diag_count == 0) {
@@ -182,3 +134,5 @@ void mixing_drive_motors(int16_t throttle, int16_t steering, int16_t weapon, boo
         --diag_count;
     }
 }
+
+//this is a highly butchered version of the mixing that comes stock on the malenki nano, malenki nano integrated, and malenki nano integrated HV - use at your own risk, and only if you know what it means/actually does.
