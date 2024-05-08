@@ -19,6 +19,7 @@ A KIWI Omni drive firmware for the Malenki Nano all-in-one RX &amp; Tri-ESC plat
 ## Version
 - This program uses the base files released before 6/22/23
   - 6/22/23 - deploy
+  - 5/7/24 - new revision with "better" equations
 ## Usage
 To control you need access to three channels.
 Ex. Flysky FS-i6 the right stick up/down will be your forward & backward, right stick left/right will be strafe left & right, left stick left/right will be your turn left & right
@@ -32,11 +33,11 @@ To flash new firmware, you need to connect to the SOICbite debug pads, the pinou
 |`3`|GND|`6`|UPDI interface|
 |`4`|GND|`5`|nc|
 
-![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/Malaxi.PNG)
+![image that shows the front and back of the red, Malenki Nano Integrated High Voltage, focusing on the 4 pads on each front and back that make up the debug and programming interface](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/Malaxi.PNG)
 
 Pin 8 is the top pin on the front, and pin 1 is the top pin on the back, and is indicated with a white outline, shown below.
 
-The flashing instructions are listed in a [issue request](https://github.com/MarkR42/malenki-nano/issues/6) on the Malenki-nano Repo.
+The flashing instructions are listed in an [issue request](https://github.com/MarkR42/malenki-nano/issues/6) on the Malenki-nano Repo.
 
 install the listed programs and libraries, and use the script [flash1616.sh](https://github.com/MarkR42/malenki-nano/blob/master/flashcmd/flash1616.sh) to flash the Malenki Nano with the bin file.
 
@@ -45,21 +46,18 @@ You can also compile your own code with the instructions given [here](https://gi
 The three channels of the Malenki lend well to this usage, with the addition of the third channel allowing movement in all 360 degrees.
 
 Equations:
-```
-//left-Front Wheel
-left = (-steering - (1.732050808)*throttle + weapon) / 3;
 
-//Right-Front Wheel
-right = (-steering + (1.732050808)*throttle + weapon) / 3;
+[Desmos Link](https://www.desmos.com/calculator/lyzy8svf33)
 
-//Back Wheel
-back = (2*steering + weapon) / 3;
-```
+![new equations that calculate the motor speeds needed to properly move the Kiwi Drive robot](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/DesmosCalculations.png)
+
+Motor 4 = Right Motor, Motor 5 = Left Motor, Motor 6 = Back Motor, assuming the very front has no wheel.
+
 (left, right, & back are final motor outputs, but may need to be mapped to standard 1000-2000ms PWM for your usage)
 - input numbers should be in the form of EX. +-100, +-400, +-1000, as long as 0=no movement
 - as your numbers get bigger, it theoretically gets more accurate, but is harder to calculate
-- 1.732050808 is used as a replacement to sqrt(3) in the calculations.
-- these equations can be easily adapted to your own program, throttle is the up/down movement on the right stick of your tx, steering is the left/right movement on the right stick of your tx, and throttle is the left/right movement on the left stick of your tx, photo attached below.
+- 4 digit truncated values have replaced the sqrt(x) values and xpi/y values.
+- these equations can be ~~easily~~ adapted to your own program, throttle is the up/down movement on the right stick of your tx, steering is the left/right movement on the right stick of your tx, and throttle is the left/right movement on the left stick of your tx, photo attached below.
 
 ![alt text](https://github.com/NRS048/OmniMakenki-KIWI/blob/main/img/channels.png)
 
@@ -71,3 +69,5 @@ back = (2*steering + weapon) / 3;
 ## Support
 
 For support, dm `dat_monkey06two` on discord, find him on the [MACRObot.us discord](https://discord.gg/SXwArmv)
+
+By using this, please understand that this program has been butchered from the origional code written by Mark R, It *should* work, but it is extremely at your own risk, you must test it before use in any copmbat or technical environment.
