@@ -7,8 +7,6 @@
 #include "motors.h"
 #include "diag.h"
 
-#define M_PI 3.14159265358979323846
-
 mixing_state_t mixing_state;
 
 void mixing_init()
@@ -64,16 +62,18 @@ void mixing_drive_motors(int16_t throttle, int16_t steering, int16_t weapon, boo
     steering = deadzone(steering, 10);
     weapon = deadzone(weapon, 10);  
     
-    int left, right, back, temp01;
+    int left, right, back, temp01, sqrtval, arctanval;
 
     //omni mixing -------------------------------------------------------------------------
+    sqrtval = 100*sqrt((throttle*throttle)+(steering*steering)); //values used in multiple parts of both functions, only calculated once per loop now, ideally faster.
 
+    arctanval = atan2(throttle, steering);
 
-    left = (100*sqrt((throttle*throttle)+(steering*steering))*sin((0.524)-atan2(throttle, steering)))/fmin(abs(100/cos((1.571)-atan2(throttle, steering))), abs(100/sin((1.571)-atan2(throttle, steering)))) + weapon; //math explained in the README - https://github.com/NRS048/OmniMakenki-KIWI
+    left = (sqrtval*sin(0.524-arctanval))/fmin(abs(100/cos(1.571-arctanval)), abs(100/sin(1.571-arctanval))) + weapon; //math explained in the README - https://github.com/NRS048/OmniMakenki-KIWI
     
-    right = (100*sqrt((throttle*throttle)+(steering*steering))*sin((2.618)-atan2(throttle, steering)))/fmin(abs(100/cos((1.571)-atan2(throttle, steering))), abs(100/sin((1.571)-atan2(throttle, steering)))) + weapon;
+    right = (sqrtval*sin(2.618-arctanval))/fmin(abs(100/cos(1.571-arctanval)), abs(100/sin(1.571-arctanval))) + weapon;
         
-    back = (100*sqrt((throttle*throttle)+(steering*steering))*sin((4.712)-atan2(throttle, steering)))/fmin(abs(100/cos((1.571)-atan2(throttle, steering))), abs(100/sin((1.571)-atan2(throttle, steering)))) + weapon;
+    back = (sqrtval*sin(4.712-arctanval))/fmin(abs(100/cos(1.571-arctanval)), abs(100/sin(1.571-arctanval))) + weapon;
 
     if( (fmax(left, fmax(right, back))) > 100 ){
         temp01 = fmax(left, fmax(right, back)) - 100;
