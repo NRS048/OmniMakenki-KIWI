@@ -68,6 +68,6 @@ Motor 4 = Right Motor, Motor 5 = Left Motor, Motor 6 = Back Motor, assuming the 
 
 ## Support
 
-For support, dm `dat_monkey06two` on discord, find him on the [MACRObot.us discord](https://discord.gg/SXwArmv)
+For support, dm `n8.click` on discord, find him on the [MACRObot.us discord](https://discord.gg/SXwArmv)
 
-By using this, please understand that this program has been butchered from the origional code written by Mark R, It *should* work, but it is extremely at your own risk, you must test it before use in any copmbat or technical environment.
+By using this, please understand that this program has been butchered from the origional code written by Mark R, It *should* work, but it is extremely at your own risk, previously built in safeties or watchdogs have not been fully checked and retested. You must test it before use in any combat or technical environment.
